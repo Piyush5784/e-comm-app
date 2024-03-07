@@ -1,0 +1,43 @@
+.cart {
+    color: rgb(151, 151, 151);
+}
+
+.ml {
+    margin-left: 30px;
+}
+
+.hoverEffect:hover {
+    background-color: rgba(180, 182, 180, 0.86);
+    border-radius: 5px;
+}
+
+.body-section {
+    background-color: #CBE1EF;
+}
+
+.textbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: baseline;
+    height: 18.75rem;
+}
+
+.mg-l {
+    margin-left: 3.75rem;
+}
+
+.button button {
+    width: 300px;
+    color: white;
+    border-radius: 5px;
+    background-color: #003E68;
+}
+
+.mg-r {
+    margin-right: 3.75rem;
+}
+
+.hover {
+    background-color: rgb(92, 113, 232);
+}
