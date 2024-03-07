@@ -7,29 +7,30 @@
 <h2>Features</h2>
 
 <ul>
-  <li><strong>User Signup using OAuth:</strong> Users can easily sign up using OAuth for a hassle-free registration process.</li>
-  <li><strong>User Sign-in/OAuth Sign-in:</strong> Secure sign-in functionality for registered users.</li>
-  <li><strong>Purchase Products:</strong> Users can browse through products and purchase them with ease.</li>
-  <li><strong>View Purchased Items:</strong> Users have access to view the items they have purchased.</li>
-  <li><strong>Make Payment:</strong> Seamless integration with Razorpay for secure payment transactions.</li>
-  <li><strong>Auto Login:</strong> Users are automatically logged in to their accounts upon revisiting the application.</li>
-  <li><strong>Responsive Design:</strong> The application is designed to provide a smooth experience across various devices.</li>
+  ✨<strong>User Signup using OAuth:</strong> Users can easily sign up using OAuth for a hassle-free registration process. <br/>
+  ✨<strong>User Sign-in/OAuth Sign-in:</strong> Secure sign-in functionality for registered users.<br/>
+  ✨<strong>Purchase Products:</strong> Users can browse through products and purchase them with ease.<br/>
+  ✨<strong>View Purchased Items:</strong> Users have access to view the items they have purchased.<br/>
+  ✨<strong>Make Payment:</strong> Seamless integration with Razorpay for secure payment transactions.<br/>
+  ✨<strong>Auto Login:</strong> Users are automatically logged in to their accounts upon revisiting the application.<br/>
+  ✨<strong>Responsive Design:</strong> The application is designed to provide a smooth experience across various devices.<br/>
 </ul>
 
 <h2>Technologies Used</h2>
 
 <ul>
-  <li><strong>React:</strong> Utilized for building an optimized front-end application.</li>
-  <li><strong>TypeScript:</strong> Provides enhanced code quality and developer productivity.</li>
-  <li><strong>Firebase:</strong> Backend infrastructure including authentication and database services.</li>
-  <li><strong>Razorpay Payment Integration:</strong> Integrated for secure payment processing.</li>
-  <li><strong>React Form Hook:</strong> Used for input validation ensuring data integrity.</li>
-  <li><strong>Axios:</strong> Handling HTTP requests for seamless data retrieval and updates.</li>
-  <li><strong>Bootstrap:</strong> Framework for styling components and ensuring a consistent UI.</li>
-  <li><strong>Firebase Firestore:</strong> Utilized for storing application data securely.</li>
-  <li><strong>Recoil:</strong> State management library for maintaining application state.</li>
-  <li><strong>Hooks:</strong> Utilized various hooks such as useContext, useLocalStorage, etc. for efficient state management and component logic.</li>
+  ✨<strong>React:</strong> Utilized for building an optimized front-end application.<br>
+  ✨<strong>TypeScript:</strong> Provides enhanced code quality and developer productivity.<br>
+  ✨<strong>Firebase:</strong> Backend infrastructure including authentication and database services.<br>
+  ✨<strong>Razorpay Payment Integration:</strong> Integrated for secure payment processing.<br>
+  ✨<strong>React Form Hook:</strong> Used for input validation ensuring data integrity.<br>
+  ✨<strong>Axios:</strong> Handling HTTP requests for seamless data retrieval and updates.<br>
+  ✨<strong>Bootstrap:</strong> Framework for styling components and ensuring a consistent UI.<br>
+  ✨<strong>Firebase Firestore:</strong> Utilized for storing application data securely.<br>
+  ✨<strong>Recoil:</strong> State management library for maintaining application state.<br>
+  ✨<strong>Hooks:</strong> Utilized various hooks such as useContext, useLocalStorage, etc. for efficient state management and component logic.<br>
 </ul>
+
 
 <h2>Getting Started</h2>
 
