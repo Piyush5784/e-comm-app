@@ -14,6 +14,7 @@ import OfflineRedirect from "./components/OfflineRedirect";
 import Purchases from "./Pages/Purchases";
 import PaymentSuccess from "./Pages/PaymentSuccess";
 import Footer from "./components/Footer";
+import ProductDetails from "./Pages/ProductDetails";
 const App = () => {
 
   const pageRoutes = [{
@@ -43,7 +44,10 @@ const App = () => {
   }, {
     path: "/paymentSuccess",
     component: <PaymentSuccess />
-  }
+  }, {
+    path: "/productDetails/:id",
+    component: <ProductDetails />
+  },
   ]
 
 
