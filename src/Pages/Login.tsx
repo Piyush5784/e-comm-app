@@ -19,8 +19,11 @@ const Login = () => {
 
     const handleLogin = async (data: any) => {
         const res = await firebase.loginUser(data.email, data.password)
-        toast.success(res)
-        return
+        if (res === "login successfull") {
+            return toast.success(res)
+        }
+        return toast.warning(res)
+
     }
 
 

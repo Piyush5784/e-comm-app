@@ -7,24 +7,24 @@ const Footer = () => {
             <footer className="py-5">
                 <div className="row">
                     <div className="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
+                        <h5>Page links</h5>
                         <ul className="nav flex-column">
                             <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Home</Link></li>
                             <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
+                            <li className="nav-item mb-2"><a href="/store" className="nav-link p-0 text-body-secondary">Pricing</a></li>
+                            <li className="nav-item mb-2"><a href="/about" className="nav-link p-0 text-body-secondary">FAQs</a></li>
+                            <li className="nav-item mb-2"><a href="/about" className="nav-link p-0 text-body-secondary">About</a></li>
                         </ul>
                     </div>
 
                     <div className="col-6 col-md-2 mb-3">
-                        <h5>Section</h5>
+                        <h5>Conncect with us</h5>
                         <ul className="nav flex-column">
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Home</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
-                            <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
+                            <li className="nav-item mb-2"><a target="_blank" href="https://github.com/Piyush5784" className="nav-link p-0 text-body-secondary">Github</a></li>
+                            <li className="nav-item mb-2"><a target="_blank" href="https://www.linkedin.com/in/piyush-kumar-jha-a29619239/" className="nav-link p-0 text-body-secondary">Linkedin</a></li>
+                            <li className="nav-item mb-2"><a target="_blank" href="https://twitter.com/Piyush5784" className="nav-link p-0 text-body-secondary">Twitter</a></li>
+                            <li className="nav-item mb-2"><a href="mailto:piyushjha5668@gmail.com" className="nav-link p-0 text-body-secondary">Email</a></li>
+
                         </ul>
                     </div>
 
