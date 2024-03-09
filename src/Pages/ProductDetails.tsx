@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const item = useRecoilValueLoadable(allItems)
+    const item = useRecoilValueLoadable<any>(allItems)
     const { getItemQuantity, increaseCartQuantity, openCart } = useShoppingCart()
     const navigate = useNavigate();
 

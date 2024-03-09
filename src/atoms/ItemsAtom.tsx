@@ -23,6 +23,11 @@ export const allItems = atom({
     })
 })
 
+export const total = atom({
+    key: "total",
+    default: 0
+})
+
 
 export const isOpenAtom = atom({
     key: "isOpen",

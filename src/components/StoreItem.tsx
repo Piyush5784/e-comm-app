@@ -22,7 +22,7 @@ const StoreItem = ({ id, title, price, image }: StoreItemsProps) => {
     const { getItemQuantity, increaseCartQuantity, openCart } = useShoppingCart()
 
     const navigate = useNavigate()
-    const quantity = getItemQuantity(id);
+    const quantity: number = getItemQuantity(id);
 
     return <>
         <Card style={{ width: "fit-content" }} className="h-100">
