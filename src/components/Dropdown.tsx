@@ -9,7 +9,7 @@ type user = {
 
 const Dropdown = (user: user) => {
     const firebase = usefirebaseContext();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);

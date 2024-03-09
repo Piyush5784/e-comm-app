@@ -6,9 +6,9 @@ import Skeleton from "../components/Skeleton";
 import FilterCart from "../components/FilterCart";
 
 const Store = () => {
-    const items = useRecoilValueLoadable(ItemsAtom);
+    const items = useRecoilValueLoadable<any>(ItemsAtom);
 
-    const [filterItem, setFilterItem] = useRecoilState(search)
+    const [filterItem, setFilterItem] = useRecoilState<string>(search)
 
     if (items.state == "loading") {
         return <Skeleton />

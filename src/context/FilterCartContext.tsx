@@ -14,8 +14,8 @@ export function useFilter() {
 }
 
 export const filterProvider = ({ children }: { children: ReactNode }) => {
-    const setItems = useSetRecoilState(ItemsAtom)
-    const all_Items = useRecoilValue(allItems)
+    const setItems = useSetRecoilState<any>(ItemsAtom)
+    const all_Items = useRecoilValue<any>(allItems)
 
 
     function setFilterLowToHigh(e: any) {

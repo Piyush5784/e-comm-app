@@ -14,7 +14,7 @@ const Checkout = () => {
     const navigate = useNavigate();
     const firebase = usefirebaseContext();
     const ShoppingCart = useShoppingCart();
-    const [checkbox, setCheckbox] = useRecoilState(checkAtom);
+    const [checkbox, setCheckbox] = useRecoilState<boolean>(checkAtom);
 
     const cart = useShoppingCart()
 

@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil';
 import { onlineAtom } from '../atoms/ItemsAtom';
 
 const OfflineRedirect = ({ children }: { children: ReactNode }) => {
-    const [isOnline, setIsOnline] = useRecoilState(onlineAtom);
+    const [isOnline, setIsOnline] = useRecoilState<boolean>(onlineAtom);
 
     useEffect(() => {
         const handleOnlineStatusChange = () => {

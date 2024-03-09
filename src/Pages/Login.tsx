@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { usefirebaseContext } from "../context/FirebaseContext";
 
 import { toast } from "react-toastify";
+import { useMemo } from "react";
 
 const Login = () => {
 
@@ -16,15 +17,23 @@ const Login = () => {
 
     const firebase = usefirebaseContext();
 
-
-    const handleLogin = async (data: any) => {
-        const res = await firebase.loginUser(data.email, data.password)
-        if (res === "login successfull") {
-            return toast.success(res)
+    const handleLogin = useMemo(() => async (data: any) => {
+        const res = await firebase.loginUser(data.email, data.password);
+        if (res === "login successful") {
+            toast.success(res);
+        } else {
+            toast.warning(res);
         }
-        return toast.warning(res)
+    }, []);
 
-    }
+    // const oldhandleLogin = async (data: any) => {
+    //     const res = await firebase.loginUser(data.email, data.password)
+    //     if (res === "login successfull") {
+    //         return toast.success(res)
+    //     }
+    //     return toast.warning(res)
+
+    // }
 
 
 

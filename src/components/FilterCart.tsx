@@ -7,9 +7,9 @@ import Slider from "rc-slider";
 
 const FilterCart = () => {
 
-    const [isOpen, setIsOpen] = useRecoilState(filterCartSidebarAtom)
-    const setItems = useSetRecoilState(ItemsAtom)
-    const all_Items = useRecoilValue(allItems)
+    const [isOpen, setIsOpen] = useRecoilState<boolean>(filterCartSidebarAtom)
+    const setItems = useSetRecoilState<object>(ItemsAtom)
+    const all_Items = useRecoilValue<any>(allItems)
 
 
 

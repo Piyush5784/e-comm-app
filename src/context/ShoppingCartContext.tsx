@@ -1,8 +1,8 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext } from "react";
 import ShoppingCart from "../components/ShoppingCart";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { useRecoilState } from "recoil";
-import { isOpenAtom } from "../atoms/ItemsAtom";
+import { isOpenAtom, total } from "../atoms/ItemsAtom";
 import { toast } from "react-toastify";
 type ShoppingCartProviderProps = {
     children: ReactNode
@@ -35,14 +35,11 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-    const [totalAmt, setTotalAmt] = useState(0);
+    const [totalAmt, setTotalAmt] = useRecoilState<number>(total);
 
     const setTotal = (total: number) => setTotalAmt(total);
 
-
-
-    const [isOpen, setOpen] = useRecoilState(isOpenAtom)
-
+    const [isOpen, setOpen] = useRecoilState<boolean>(isOpenAtom)
 
     const [cartItems, setCartItems] = useLocalStorage<CartItems[]>("shopping-cart", [])
 

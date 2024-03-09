@@ -1,6 +1,6 @@
 
 function StarRating({ numberOfStars }: { numberOfStars: number }) {
-    const stars = [];
+    const stars: any = [];
 
     for (let i = 0; i < numberOfStars; i++) {
         stars.push(<span key={i}>⭐</span>);

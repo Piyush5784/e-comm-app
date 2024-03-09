@@ -12,7 +12,7 @@ type ShoppingCartProp = {
 
 const ShoppingCart = ({ isOpen }: ShoppingCartProp) => {
     const navigate = useNavigate()
-    const networkConnectionCount = useRecoilValueLoadable(ItemsAtom);
+    const networkConnectionCount = useRecoilValueLoadable<any>(ItemsAtom);
 
     const { closeCart, cartItems, increaseCartQuantity, decreaseCartQuantity, getItemQuantity, setTotal } = useShoppingCart();
 
@@ -20,7 +20,7 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProp) => {
 
     useEffect(() => {
         setTotal(total)
-    })
+    }, [total])
 
     function getTotal() {
         if (networkConnectionCount.state == "hasValue") {
