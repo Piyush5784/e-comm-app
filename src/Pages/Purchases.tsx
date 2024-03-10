@@ -9,8 +9,8 @@ import { dataAtom, isLoad } from "../atoms/ItemsAtom";
 
 const Purchases = () => {
     const firebase = usefirebaseContext();
-    const [data, setData] = useRecoilState(dataAtom);
-    const [isLoading, setIsLoading] = useRecoilState(isLoad);
+    const [data, setData] = useRecoilState<any>(dataAtom);
+    const [isLoading, setIsLoading] = useRecoilState<any>(isLoad);
 
     const date = new Date();
 
@@ -58,14 +58,16 @@ const Purchases = () => {
             }, 1000);
             return <><Skeleton /></>
         }
-        return <>
-            <div className="container" style={{ height: "80vh" }}>
-                <div className="mt-4">
-                    <h1>Not Purchased Anything</h1>
-                    <p>Oops! You haven't purchased any items yet.</p>
+        else {
+            return <>
+                <div className="container" style={{ height: "80vh" }}>
+                    <div className="mt-4">
+                        <h1>Not Purchased Anything</h1>
+                        <p>Oops! You haven't purchased any items yet.</p>
+                    </div>
                 </div>
-            </div>
-        </>;
+            </>;
+        }
     }
     else {
 
@@ -80,13 +82,15 @@ const Purchases = () => {
                             <p className="ml">Payment Id: {item.razoryPayId}</p>
                             <p className="ml">Total amount paid : ₹{item.amount}</p>
 
-                            <ul>
+                            <ul className="d-flex">
                                 {item.CartItems.map((cartItem: any, cartIndex: any) => (
                                     <>
-                                        <p key={cartIndex}>Quantity: {cartItem.quantity}</p>
-                                        <div className="d-flex flex-column">
-                                            <PurchaseItem id={cartItem.id} quantity={cartItem.quantity} />
-                                        </div >
+                                        <div className="m-2 d-flex flex-column justify-content-center align-items-center">
+                                            <p key={cartIndex}>Quantity: {cartItem.quantity}</p>
+                                            <div className="d-flex flex-column">
+                                                <PurchaseItem id={cartItem.id} />
+                                            </div >
+                                        </div>
                                     </>
                                 ))}
                             </ul>
