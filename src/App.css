@@ -41,3 +41,20 @@
 .hover {
     background-color: rgb(92, 113, 232);
 }
+
+
+.homeDiv {
+    background-image: url(./assets/background.jpg);
+    border-radius: 8px;
+    opacity: 0.85;
+    filter: saturate(1.4);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+}
