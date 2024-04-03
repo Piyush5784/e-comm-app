@@ -7,9 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useShoppingCart } from "./ShoppingCartContext";
 
+type Config = {
+    apiKey: string,
+    authDomain: string,
+    projectId: string,
+    storageBucket: string,
+    messagingSenderId: string,
+    appId: string,
+    databaseURL: string
+}
 
-
-const firebaseConfig = {
+const firebaseConfig: Readonly<Config> = {
     apiKey: import.meta.env.VITE_React_APP_apiKey,
     authDomain: import.meta.env.VITE_React_APP_authDomain,
     projectId: import.meta.env.VITE_React_APP_projectId,
