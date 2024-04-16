@@ -9,8 +9,8 @@ type responseType = {
   razorpay_payment_id: string;
 };
 type optionsType = {
-  key: any;
-  key_secret: any;
+  key: string;
+  key_secret: string;
   amount: number;
   currency: string;
   order_receipt: string;
