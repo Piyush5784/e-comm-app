@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar as Navbs } from "react-bootstrap";
 import { NavLink, NavigateFunction, useNavigate } from "react-router-dom";
 import cartIcon from "../assets/cartIcon.svg";
-import filterCartIcon from "../assets/filter.svg";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { filterCartSidebarAtom } from "../atoms/ItemsAtom";
 import { usefirebaseContext } from "../context/FirebaseContext";
 import { onAuthStateChanged } from "firebase/auth";
+import { useFilter } from "../context/FilterCartContext";
 
 const Navbar = () => {
   const navigate: NavigateFunction = useNavigate();
@@ -36,7 +36,6 @@ const Navbar = () => {
   }, []);
 
   const { openCart, cartQuantity } = useShoppingCart();
-  const setFilter = useSetRecoilState(filterCartSidebarAtom);
 
   const links = [
     { to: "/", name: "Home" },
@@ -64,13 +63,6 @@ const Navbar = () => {
           </Nav>
 
           <div className="d-flex align-items-center">
-            <button
-              onClick={() => setFilter(true)}
-              className="nav-link border-0 bg-transparent me-3"
-              style={{ position: "relative" }}
-            >
-              <img src={filterCartIcon} height={"23px"} alt="icon" />
-            </button>
             <button
               onClick={openCart}
               className="nav-link border-0 bg-transparent m-2"

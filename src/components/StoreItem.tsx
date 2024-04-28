@@ -15,7 +15,6 @@ type StoreItemsProps = {
 
 const StoreItem = ({ id, title, price, image }: StoreItemsProps) => {
   const { getItemQuantity, increaseCartQuantity, openCart } = useShoppingCart();
-
   const navigate: NavigateFunction = useNavigate();
   const quantity: number = getItemQuantity(id);
 

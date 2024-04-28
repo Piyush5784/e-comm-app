@@ -3,7 +3,8 @@ import { ItemsAtom, search } from "../atoms/ItemsAtom";
 import { Col, Row } from "react-bootstrap";
 import StoreItem from "../components/StoreItem";
 import Skeleton from "../components/Skeleton";
-import FilterCart from "../components/FilterCart";
+import filterCartIcon from "../assets/filter.svg";
+import { useFilter } from "../context/FilterCartContext";
 
 export type contentsProp = {
   [x: string]: any;
@@ -26,6 +27,9 @@ export type itemsProp = {
 const Store = () => {
   const items = useRecoilValueLoadable<itemsProp>(ItemsAtom);
 
+  const { closeSideCart } = useFilter();
+  const { openSideCart } = useFilter();
+
   const [filterItem, setFilterItem] = useRecoilState<string>(search);
 
   if (items.state == "loading") {
@@ -33,18 +37,31 @@ const Store = () => {
   } else if (items.state == "hasValue") {
     return (
       <>
-        <input
-          type="text"
-          onChange={(e) => {
-            setFilterItem(e.target.value.toLowerCase());
-          }}
-          className="form-control ml-3 mb-3 p-2"
-          style={{ width: "50%" }}
-          placeholder="Search item"
-        />
+        <div className="d-flex ">
+          <input
+            type="text"
+            onChange={(e) => {
+              setFilterItem(e.target.value.toLowerCase());
+            }}
+            className="form-control ml-3 mb-3 p-2"
+            style={{ width: "50%" }}
+            placeholder="Search item"
+          />
+          <div className="">
+            <button
+              onClick={openSideCart}
+              className="nav-link border-0 bg-transparent me-3 d-flex justify-content-center align-items-center p-2"
+              style={{ position: "relative" }}
+            >
+              <img src={filterCartIcon} height={"23px"} alt="icon" />
+            </button>
+          </div>
+        </div>
 
-        <FilterCart />
-        <div className=" d-flex justify-center items-center w-full">
+        <div
+          className=" d-flex justify-center items-center w-full"
+          onClick={() => closeSideCart()}
+        >
           <Row md={2} xs={1} lg={4} className="g-3">
             {items.contents
               .filter((item: contentsProp) => {
