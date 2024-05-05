@@ -9,7 +9,6 @@ import {
 import "rc-slider/assets/index.css";
 import Slider from "rc-slider";
 import { useFilter } from "../context/FilterCartContext";
-import { SetterOrUpdater } from "recoil";
 type FilterCartProp = {
   isSideOpen: boolean;
 };

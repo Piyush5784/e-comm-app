@@ -3,11 +3,8 @@ import { Button, Container, Nav, Navbar as Navbs } from "react-bootstrap";
 import { NavLink, NavigateFunction, useNavigate } from "react-router-dom";
 import cartIcon from "../assets/cartIcon.svg";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { filterCartSidebarAtom } from "../atoms/ItemsAtom";
 import { usefirebaseContext } from "../context/FirebaseContext";
 import { onAuthStateChanged } from "firebase/auth";
-import { useFilter } from "../context/FilterCartContext";
 
 const Navbar = () => {
   const navigate: NavigateFunction = useNavigate();
