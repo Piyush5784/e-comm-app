@@ -9,11 +9,13 @@ import {
 import "rc-slider/assets/index.css";
 import Slider from "rc-slider";
 import { useFilter } from "../context/FilterCartContext";
+import { SetterOrUpdater } from "recoil";
+type FilterCartProp = {
+  isSideOpen: boolean;
+};
 
-const FilterCart = () => {
+const FilterCart = ({ isSideOpen }: FilterCartProp) => {
   const {
-    isOpen,
-    setIsOpen,
     setFilterATZ,
     setFilterHighToLow,
     setFilterLowToHigh,
@@ -23,9 +25,13 @@ const FilterCart = () => {
     setFilterWomenItems,
     all_Items,
     setItems,
+    closeSideCart,
   } = useFilter();
+
+  console.log(isSideOpen);
+
   return (
-    <Offcanvas show={isOpen} onHide={() => setIsOpen(false)} placement="start">
+    <Offcanvas show={isSideOpen} onHide={closeSideCart} placement="start">
       <OffcanvasHeader>
         <OffcanvasTitle>Cart</OffcanvasTitle>
       </OffcanvasHeader>
@@ -121,7 +127,7 @@ const FilterCart = () => {
 
       <Button
         onClick={() => {
-          setIsOpen(false);
+          closeSideCart();
           setItems(all_Items);
         }}
         style={{ margin: "10px" }}

@@ -49,7 +49,6 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProp) => {
       return 0;
     }
   }
-
   return (
     <Offcanvas show={isOpen} onHide={closeCart} placement="end">
       <OffcanvasHeader>

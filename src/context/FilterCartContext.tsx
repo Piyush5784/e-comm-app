@@ -1,16 +1,18 @@
-import { ChangeEvent, ReactNode, createContext, useContext } from "react";
 import {
-  SetterOrUpdater,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
-import { ItemsAtom, allItems, filterCartSidebarAtom } from "../atoms/ItemsAtom";
+  ChangeEvent,
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+} from "react";
+import { SetterOrUpdater, useRecoilValue, useSetRecoilState } from "recoil";
+import { ItemsAtom, allItems } from "../atoms/ItemsAtom";
 import { contentsProp, itemsProp } from "../Pages/Store";
+import FilterCart from "../components/FilterCart";
 
 type filterContext = {
-  isOpen: boolean;
-  setIsOpen: SetterOrUpdater<boolean>;
+  openSideCart: () => void;
+  closeSideCart: () => void;
   setFilterLowToHigh: (e: ChangeEvent<HTMLInputElement>) => void;
   setFilterHighToLow: (e: ChangeEvent<HTMLInputElement>) => void;
   setFilterATZ: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -28,11 +30,11 @@ export function useFilter() {
   return useContext(FilterCartContext);
 }
 
-export const filterProvider = ({ children }: { children: ReactNode }) => {
+export const FilterProvider = ({ children }: { children: ReactNode }) => {
   const setItems = useSetRecoilState<itemsProp>(ItemsAtom);
   const all_Items = useRecoilValue<itemsProp>(allItems);
 
-  const [isOpen, setIsOpen] = useRecoilState<boolean>(filterCartSidebarAtom);
+  const [openFilter, closeFilter] = useState<boolean>(false);
 
   function setFilterLowToHigh(e: ChangeEvent<HTMLInputElement>) {
     if (e.target.checked) {
@@ -122,7 +124,8 @@ export const filterProvider = ({ children }: { children: ReactNode }) => {
     );
     setItems(filteredItems);
   };
-
+  const openSideCart = () => closeFilter((c) => !c);
+  const closeSideCart = () => closeFilter(false);
   // function setFilterLowToHigh(e: ChangeEvent<HTMLInputElement>) {
   //   if (e.target.checked) {
   //     setItems((currItems: itemsProp) => {
@@ -140,8 +143,8 @@ export const filterProvider = ({ children }: { children: ReactNode }) => {
     <FilterCartContext.Provider
       value={{
         setFilterLowToHigh,
-        isOpen,
-        setIsOpen,
+        openSideCart,
+        closeSideCart,
         setFilterHighToLow,
         setFilterATZ,
         setFilterZTA,
@@ -153,6 +156,7 @@ export const filterProvider = ({ children }: { children: ReactNode }) => {
       }}
     >
       {children}
+      <FilterCart isSideOpen={openFilter} />
     </FilterCartContext.Provider>
   );
 };

@@ -29,6 +29,8 @@ const Register = () => {
   return (
     <>
       <h1 className="text-center">Registration</h1>
+      <p className="text-center">Use Any username and password for testing</p>
+
       <Container style={{ maxWidth: "500px" }}>
         <form
           style={{ height: "400px" }}
