@@ -7,13 +7,13 @@
 <h2>Features</h2>
 
 <ul>
-  ✨<strong>User Signup using OAuth:</strong> Users can easily sign up using OAuth for a hassle-free registration process. <br/>
-  ✨<strong>User Sign-in/OAuth Sign-in:</strong> Secure sign-in functionality for registered users.<br/>
-  ✨<strong>Purchase Products:</strong> Users can browse through products and purchase them with ease.<br/>
-  ✨<strong>View Purchased Items:</strong> Users have access to view the items they have purchased.<br/>
-  ✨<strong>Make Payment:</strong> Seamless integration with Razorpay for secure payment transactions.<br/>
-  ✨<strong>Auto Login:</strong> Users are automatically logged in to their accounts upon revisiting the application.<br/>
-  ✨<strong>Responsive Design:</strong> The application is designed to provide a smooth experience across various devices.<br/>
+<!--   ✨<strong>User Signup using OAuth</strong><br/> -->
+  ✨<strong>User Sign-in/Sign-up using OAuth </strong><br/>
+  ✨<strong>Purchase Products</strong><br/>
+  ✨<strong>View Purchased Items</strong><br/>
+  ✨<strong>Make Payment</strong><br/>
+  ✨<strong>Auto Login</strong><br/>
+  ✨<strong>Responsive Design</strong><br/>
 </ul>
 
 <h2>Technologies Used</h2>
