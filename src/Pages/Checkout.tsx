@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { usefirebaseContext } from "../context/FirebaseContext";
 import { Button } from "react-bootstrap";
 import {
@@ -16,15 +16,31 @@ const Checkout = () => {
   const firebase = usefirebaseContext();
   const ShoppingCart = useShoppingCart();
   const [checkbox, setCheckbox] = useRecoilState<boolean>(checkAtom);
-
   const cart: ShoppingCartContext = useShoppingCart();
-
   const getAmt: number = cart.totalAmt;
-
   const discount: number = Math.floor((10 / 100) * cart.totalAmt);
+  // const [Address, setAddress] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  // 0;
+  // async function addAddress() {
+  // const res = await firebase.createAndUpdateAddress({
+  //   State: "Assam",
+  //   Country: "India",
+  //   Pincode: 781025,
+  // });
+  // alert(res);
+  // console.log(res);
+  // }
+
+  // async function getAllAddress() {
+  //   const res = await firebase.getAllAddress();
+  //   setLoading(false);
+  //   setAddress(res);
+  // }
 
   useEffect(() => {
     firebase.checkLogin();
+    // getAllAddress();
   });
 
   const purchaseHandler = async () => {
@@ -93,13 +109,43 @@ const Checkout = () => {
               />
               <label className="custom-control-label p-2" htmlFor="credit">
                 {" "}
-                Address 1
+                Demo Address
               </label>
               <div className="addressDetails p-2 ml-5">
                 <p>Guwahati, Assam</p>
                 <p>781001</p>
               </div>
             </div>
+            {/* {!loading && (
+              <>
+                {Address.map((item) => (
+                  <>
+                    <div className="border mt-2 rounded">
+                      <input
+                        id="address"
+                        type="radio"
+                        className="m-2 p-2 custom-control-input"
+                        onChange={(e) => setCheckbox(e.target.checked)}
+                        required
+                      />
+                      <div className="addressDetails p-2 ml-5">
+                        <p>Guwahati, Assam</p>
+                        <p>781001</p>
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </>
+            )} */}
+
+            {/* <div className="d-flex justify-content-center align-items-center p-2">
+              <button
+                onClick={addAddress}
+                className="p-2 rounded bg-primary text-white"
+              >
+                Add Address
+              </button>
+            </div> */}
           </div>
         </div>
       </div>
@@ -107,4 +153,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default memo(Checkout);
