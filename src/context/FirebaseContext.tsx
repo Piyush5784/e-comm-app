@@ -7,8 +7,10 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  Auth,
 } from "firebase/auth";
 import {
+  DocumentData,
   addDoc,
   collection,
   getDocs,
@@ -48,10 +50,35 @@ const firestore = getFirestore(firebaseApp);
 
 const provider = new GoogleAuthProvider();
 
-export const FirebaseContext = createContext({});
-
+export const FirebaseContext = createContext({} as FirebaseContextProp);
+type create_address_prop = {
+  State: string;
+  Country: string;
+  Pincode: Number;
+};
 type response = {
   [key: string]: any;
+};
+
+type FirebaseContextProp = {
+  createUser: (email: string, password: string) => Promise<string>;
+  loginUser: (email: string, password: string) => Promise<string>;
+  createUserUsingGoogle: (
+    email: string,
+    password: string
+  ) => Promise<string | undefined>;
+  firebaseAuth: Auth;
+  signout: () => void;
+  getAllAddress: () => Promise<DocumentData[]>;
+  createAndUpdateAddress: ({
+    State,
+    Country,
+    Pincode,
+  }: create_address_prop) => Promise<string>;
+  checkLogin: () => Promise<unknown>;
+  userEmail: string;
+  addUpdatePurchase: (razoryPayId: string, amount: number) => Promise<string>;
+  getPurchases: () => Promise<DocumentData[]>;
 };
 
 export const usefirebaseContext = (): response => useContext(FirebaseContext);
@@ -162,6 +189,72 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  async function createAndUpdateAddress({
+    State,
+    Country,
+    Pincode,
+  }: create_address_prop) {
+    console.log(State, Country, Pincode);
+    const querySnapshot = await getDocs(
+      query(
+        collection(firestore, "usersCollection"),
+        where("userEmail", "==", userEmail)
+      )
+    );
+    try {
+      if (!querySnapshot.empty) {
+        querySnapshot.docs[0].id;
+
+        await addDoc(
+          collection(
+            firestore,
+            `usersCollection/${querySnapshot.docs[0].id}/Address`
+          ),
+          {
+            State: State,
+            Country: Country,
+            Pincode: Pincode,
+          }
+        );
+        return "Address successfully added";
+      } else {
+        console.log("reaching here");
+        const addUser = await addDoc(collection(firestore, "usersCollection"), {
+          userEmail,
+        });
+
+        await addDoc(
+          collection(firestore, `usersCollection/${addUser.id}/Address/`),
+          {
+            State: State,
+            Country: Country,
+            Pincode: Pincode,
+          }
+        );
+        return "Address successfully added";
+      }
+    } catch (error) {
+      console.log(error);
+      return "Address Not added";
+    }
+  }
+
+  async function getAllAddress() {
+    const user = await checkLogin();
+    const userSnapshot = await getDocs(
+      query(
+        collection(firestore, "usersCollection"),
+        where("userEmail", "==", user)
+      )
+    );
+    const userId = userSnapshot.docs[0].id;
+    const querySnapshot2 = await getDocs(
+      collection(firestore, `usersCollection/${userId}/Address`)
+    );
+    const Address = querySnapshot2.docs.map((doc) => doc.data());
+    return Address;
+  }
+
   const createUserUsingGoogle = async () => {
     try {
       const res = await signInWithPopup(firebaseAuth, provider);
@@ -200,8 +293,10 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
         createUserUsingGoogle,
         firebaseAuth,
         signout,
+        createAndUpdateAddress,
         checkLogin,
         userEmail,
+        getAllAddress,
         addUpdatePurchase,
         getPurchases,
       }}

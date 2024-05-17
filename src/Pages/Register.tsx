@@ -5,6 +5,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { usefirebaseContext } from "../context/FirebaseContext";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { memo } from "react";
 
 const Register = () => {
   const firebase = usefirebaseContext();
@@ -80,4 +81,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default memo(Register);

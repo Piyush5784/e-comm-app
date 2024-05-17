@@ -5,6 +5,7 @@ import StoreItem from "../components/StoreItem";
 import Skeleton from "../components/Skeleton";
 import filterCartIcon from "../assets/filter.svg";
 import { useFilter } from "../context/FilterCartContext";
+import { memo } from "react";
 
 export type contentsProp = {
   [x: string]: any;
@@ -85,4 +86,4 @@ const Store = () => {
   }
 };
 
-export default Store;
+export default memo(Store);

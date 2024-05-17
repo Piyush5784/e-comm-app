@@ -15,6 +15,7 @@ import Purchases from "./Pages/Purchases";
 import PaymentSuccess from "./Pages/PaymentSuccess";
 import Footer from "./components/Footer";
 import ProductDetails from "./Pages/ProductDetails";
+import { memo } from "react";
 const App = () => {
   const pageRoutes = [
     {
@@ -77,4 +78,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default memo(App);

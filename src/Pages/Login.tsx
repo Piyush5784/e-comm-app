@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { usefirebaseContext } from "../context/FirebaseContext";
 
 import { toast } from "react-toastify";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 
 const Login = () => {
   const {
@@ -18,9 +18,8 @@ const Login = () => {
 
   const handleLogin = useMemo(
     () => async (data: FieldValues) => {
-      console.log(data);
       const res = await firebase.loginUser(data.email, data.password);
-      if (res === "login successful") {
+      if (res === "login successfull") {
         toast.success(res);
       } else {
         toast.warning(res);
@@ -28,6 +27,16 @@ const Login = () => {
     },
     []
   );
+
+  async function guestLoginHandler() {
+    let guestEmail = `guest${Math.floor(Math.random() * 1000)}@gmail.com`;
+    const res = await firebase.createUser(guestEmail, "123456789");
+    if (res === "registration successfull") {
+      toast.success("Guest Logged In");
+    } else {
+      toast.warning(res);
+    }
+  }
   return (
     <>
       <h1 className="text-center">Login</h1>
@@ -72,13 +81,19 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             Login
           </button>
-          <p className="text-center">
-            Don't have an account ? <Link to={"/register"}>Register here</Link>
-          </p>
         </form>
+        <button
+          className="btn btn-primary w-100 mb-5"
+          onClick={guestLoginHandler}
+        >
+          Login as Guest
+        </button>
+        <p className="text-center">
+          Don't have an account ? <Link to={"/register"}>Register here</Link>
+        </p>
       </Container>
     </>
   );
 };
 
-export default Login;
+export default memo(Login);

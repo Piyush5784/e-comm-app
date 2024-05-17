@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { usefirebaseContext } from "../context/FirebaseContext";
 import "../App.css";
 import PurchaseItem from "../components/PurchaseItem";
@@ -102,4 +102,4 @@ const Purchases = () => {
   }
 };
 
-export default Purchases;
+export default memo(Purchases);
