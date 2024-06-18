@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 import { usefirebaseContext } from "../context/FirebaseContext";
 
 import { toast } from "react-toastify";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 
 const Login = () => {
+  const [wait, setAwait] = useState(false);
   const {
     register,
     handleSubmit,
@@ -18,17 +19,21 @@ const Login = () => {
 
   const handleLogin = useMemo(
     () => async (data: FieldValues) => {
+      setAwait(true);
       const res = await firebase.loginUser(data.email, data.password);
       if (res === "login successfull") {
         toast.success(res);
       } else {
         toast.warning(res);
       }
+      setAwait(false);
     },
+
     []
   );
 
   async function guestLoginHandler() {
+    setAwait(true);
     let guestEmail = `guest${Math.floor(Math.random() * 1000)}@gmail.com`;
     const res = await firebase.createUser(guestEmail, "123456789");
     if (res === "registration successfull") {
@@ -36,6 +41,7 @@ const Login = () => {
     } else {
       toast.warning(res);
     }
+    setAwait(false);
   }
   return (
     <>
@@ -71,19 +77,24 @@ const Login = () => {
               {errors.password && "password is required"}
             </small>
           </div>
+          <button
+            type="submit"
+            className={`btn btn-primary ${wait && `disabled`}`}
+          >
+            Login with Email
+          </button>
+          <p className="text-center">Or</p>
           <Button
             variant="light"
+            className={`border ${wait && `disabled`}`}
             onClick={() => firebase.createUserUsingGoogle()}
           >
             <img src={googleLogo} alt="logo" height={"28px"} />
             Login with google
           </Button>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
         </form>
         <button
-          className="btn btn-primary w-100 mb-5"
+          className={`btn btn-primary w-100 mb-5 ${wait && `disabled`}`}
           onClick={guestLoginHandler}
         >
           Login as Guest
