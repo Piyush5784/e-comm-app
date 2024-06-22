@@ -33,33 +33,34 @@ export function useFilter() {
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
   const setItems = useSetRecoilState<itemsProp>(ItemsAtom);
   const all_Items = useRecoilValue<itemsProp>(allItems);
+  // const refresh = useRecoilRefresher_UNSTABLE(ItemsAtom);
 
   const [openFilter, closeFilter] = useState<boolean>(false);
 
-  function setFilterLowToHigh(e: ChangeEvent<HTMLInputElement>) {
-    if (e.target.checked) {
-      setItems((currItems: itemsProp) => {
-        const filteredAndSortedItems = currItems
-          .filter((item: contentsProp) => item.price)
-          .sort((a: contentsProp, b: contentsProp) => a.price - b.price);
-        return filteredAndSortedItems;
-      });
-    } else {
-      return setItems(all_Items);
-    }
+  function setFilterLowToHigh() {
+    // if (e.target.checked) {
+    setItems((currItems: itemsProp) => {
+      const filteredAndSortedItems = currItems
+        .filter((item: contentsProp) => item.price)
+        .sort((a: contentsProp, b: contentsProp) => a.price - b.price);
+      return filteredAndSortedItems;
+    });
+    // } else {
+    //   return setItems(all_Items);
+    // }
   }
 
-  function setFilterHighToLow(e: ChangeEvent<HTMLInputElement>) {
-    if (e.target.checked) {
-      setItems((currItems: itemsProp) => {
-        const filteredAndSortedItems = currItems
-          .filter((item: contentsProp) => item.price)
-          .sort((a: contentsProp, b: contentsProp) => b.price - a.price);
-        return filteredAndSortedItems;
-      });
-    } else {
-      return setItems(all_Items);
-    }
+  function setFilterHighToLow() {
+    // if (e.target.checked) {
+    setItems((currItems: itemsProp) => {
+      const filteredAndSortedItems = currItems
+        .filter((item: contentsProp) => item.price)
+        .sort((a: contentsProp, b: contentsProp) => b.price - a.price);
+      return filteredAndSortedItems;
+    });
+    // } else {
+    //   return setItems(all_Items);
+    // }
   }
 
   function setFilterATZ(e: ChangeEvent<HTMLInputElement>) {

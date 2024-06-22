@@ -22,7 +22,6 @@ const Navbar = () => {
     onAuthStateChanged(firebase.firebaseAuth, (user) => {
       if (user) {
         setUser({ userEmail: user.email, userLoggedIn: true });
-        // window.p
         navigate(-1);
       } else {
         setUser({ userEmail: null, userLoggedIn: false });
