@@ -1,8 +1,4 @@
 import profile from "../assets/profile.svg";
-import linkedIn from "../assets/linkedin.svg";
-import discord from "../assets/discord.svg";
-import twitter from "../assets/twitter.svg";
-import github from "../assets/github.svg";
 
 const About = () => {
   return (
